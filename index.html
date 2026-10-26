@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Moshu · Pasá, que hay torta</title>
+<meta name="theme-color" content="#B53A3A">
+<link rel="stylesheet" href="styles.css">
+</head>
+<!--
+  NOTA INTERNA (no visible): versión demo para presentar a Lucas.
+  - Sin backend: los formularios guardan solo en localStorage (moshu_demo_*).
+  - Productos, combos, beneficios, horarios, contador (37/100), % de votos y handle de Instagram son PLACEHOLDERS a confirmar con Lucas.
+  - Fotos: Drive Moshu/Jornal > Fotos y Videos (agencia anterior, 10. Octubre > Moshu TO GO, frames de Moshu Lab).
+-->
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="top">
+  <a href="#inicio" class="top-logo" aria-label="Moshu"><img src="assets/logo-black.svg" alt="Moshu"></a>
+  <nav class="tabs">
+    <a href="#lab" data-route="lab">Lab</a>
+    <a href="#lab-vivo" data-route="lab-vivo">Adentro</a>
+    <a href="#togo" data-route="togo">To Go</a>
+  </nav>
+</header>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span>¿Por qué no?</span><i>✶</i><span>Nada acá es casualidad</span><i>✶</i><span>Hecho con intención</span><i>✶</i><span>Lo obvio ya lo hizo otro</span><i>✶</i><span>Rico es lo mínimo</span><i>✶</i>
+  <span>¿Por qué no?</span><i>✶</i><span>Nada acá es casualidad</span><i>✶</i><span>Hecho con intención</span><i>✶</i><span>Lo obvio ya lo hizo otro</span><i>✶</i><span>Rico es lo mínimo</span><i>✶</i>
+</div></div>
+
+<main>
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <figure class="hero-photo">
+    <img src="img/a2.jpg" alt="Muffin de Moshu en la mano">
+    <span class="sticker st-round">¿Por<br>qué<br>no?</span>
+  </figure>
+  <div class="hero-copy">
+    <h1 class="mega">Pasá.<br>Que hay<br>torta.</h1>
+    <p class="hand hand-arrow">escaneaste algo. bien ahí ↓</p>
+    <p class="body">Estamos reescribiendo lo cotidiano. Elegí por dónde entrar.</p>
+  </div>
+  <ol class="index">
+    <li><a href="#lab"><span class="n">01</span><span class="t">Probalo antes<br>que nadie</span><span class="box">Gratis</span></a></li>
+    <li><a href="#lab-vivo"><span class="n">02</span><span class="t">Mirá qué pasa<br>adentro</span><span class="box">En obra</span></a></li>
+    <li><a href="#togo"><span class="n">03</span><span class="t">¿Qué antojo<br>sos?</span><span class="box">10 seg</span></a></li>
+  </ol>
+</section>
+
+<!-- LAB -->
+<section id="lab" class="sec red">
+  <p class="label">Moshu Lab · Prueba Nº 07</p>
+  <h2 class="mega cream">La primera<br>prueba es<br>nuestra.</h2>
+  <p class="voz">Probalo antes que nadie. Gratis.</p>
+  <figure class="bleed photo-lab">
+    <img src="img/a1.jpg" alt="Prototipo del Lab">
+    <span class="hand note-1">el prototipo nº 7 →<br>todavía sin nombre</span>
+    <span class="sticker st-stamp">Hecho con<br>intención</span>
+  </figure>
+
+  <div class="counter">
+    <div class="counter-big"><span id="labLeft">100</span></div>
+    <div class="counter-side"><b>Quedan</b><span>de 100 pruebas.<br>Cuando se terminan,<br>se terminan.</span></div>
+  </div>
+
+  <form id="labForm" class="form" novalidate>
+    <label><span>¿Cómo te llamás?</span><input name="nombre" required placeholder="Sofi" autocomplete="given-name"></label>
+    <label><span>Tu WhatsApp</span><input name="wa" required inputmode="tel" placeholder="11 2345 6789" autocomplete="tel"></label>
+    <label class="check"><input type="checkbox" name="ok" required><span>Acepto que Moshu use mis datos para mandarme el código y novedades (Ley 25.326). Me bajo cuando quiera.</span></label>
+    <button class="btn btn-cream" type="submit">Quiero probarlo →</button>
+  </form>
+
+  <div id="labOk" class="success" hidden>
+    <p class="hand big-hand">listo, <span data-name></span> ✓</p>
+    <div class="receipt" id="labReceipt">
+      <img src="assets/logo-black.svg" alt="Moshu" class="r-logo">
+      <p class="r-sub">Moshu Lab · Testing</p>
+      <div class="r-line"></div>
+      <div class="r-row"><span>1 × Prototipo Nº 07</span><span>$0</span></div>
+      <div class="r-row"><span>Curiosidad</span><span>incluida</span></div>
+      <div class="r-line"></div>
+      <div class="r-row r-total"><span>Total</span><span>$0,00</span></div>
+      <p class="r-code" id="labCode">MOSHU-LAB-0000</p>
+      <div class="barcode" aria-hidden="true"></div>
+      <p class="r-foot">Retiralo en<br><b>Moshu Cakes &amp; Brunch · Saavedra</b></p>
+      <p class="r-fine">Mostrá este ticket en caja</p>
+    </div>
+    <div class="vote">
+      <h3 class="mid">Ya lo probaste.<br>¿Y?</h3>
+      <div class="vote-btns">
+        <button class="vbtn" data-vote="venta"><b>A la venta</b><span>sale así</span></button>
+        <button class="vbtn" data-vote="ajustar"><b>Ajustalo</b><span>le falta algo</span></button>
+      </div>
+      <div class="vote-res" id="voteRes" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- LAB VIVO -->
+<section id="lab-vivo" class="sec cocoa">
+  <p class="label red-label">Moshu Lab · en vivo</p>
+  <h2 class="mega cream">Mirá qué<br>está pasando<br><span class="red-t">adentro.</span></h2>
+  <p class="voz">Sin filtro. Lo sube el equipo, desde la obra.</p>
+  <span class="sticker st-obra">En obra<br><small>pasá igual</small></span>
+  <ol class="feed" id="feed"></ol>
+  <div class="cta-row">
+    <a class="btn btn-red" href="https://www.instagram.com/" target="_blank" rel="noopener">Seguir en Instagram</a>
+    <button class="btn btn-line" id="notifyBtn">Avisame cuando abren</button>
+  </div>
+  <form id="notifyForm" class="form" hidden novalidate>
+    <label><span>Tu WhatsApp</span><input name="wa" required inputmode="tel" placeholder="11 2345 6789"></label>
+    <label class="check"><input type="checkbox" name="ok" required><span>Acepto que Moshu use mis datos para avisarme (Ley 25.326).</span></label>
+    <button class="btn btn-cream" type="submit">Avisame</button>
+  </form>
+  <p id="notifyOk" class="hand big-hand cream-t" hidden>anotado. sos de los primeros ✓</p>
+</section>
+
+<!-- TO GO -->
+<section id="togo" class="sec cream-bg">
+  <p class="label">Moshu To Go</p>
+  <h2 class="mega">Poco tiempo.<br>Buenas<br>decisiones.</h2>
+  <figure class="bleed photo-togo">
+    <img src="img/togo3.jpg" alt="Futuro local de Moshu To Go">
+    <span class="hand note-2">acá abrimos ↑<br>falta poquito</span>
+  </figure>
+  <p class="voz dark">3 preguntas. 10 segundos. <b>¿Qué antojo sos?</b></p>
+
+  <div id="quiz" class="quiz">
+    <div class="qhead"><span id="qnum">1/3</span><div class="qbar"><i id="qbar"></i></div></div>
+    <div class="q" data-q="0">
+      <h3 class="mid">¿Solo o con algo dulce?</h3>
+      <div class="tiles">
+        <button data-a="solo"><img src="img/fam0042.jpg" alt=""><span>Solo, gracias</span></button>
+        <button data-a="dulce"><img src="img/a4.jpg" alt=""><span>Con algo dulce</span></button>
+      </div>
+    </div>
+    <div class="q" data-q="1" hidden>
+      <h3 class="mid">¿Acá o caminando?</h3>
+      <div class="tiles">
+        <button data-a="aca"><img src="img/fam0082.jpg" alt=""><span>Me quedo</span></button>
+        <button data-a="caminando"><img src="img/togo1.jpg" alt=""><span>Caminando</span></button>
+      </div>
+    </div>
+    <div class="q" data-q="2" hidden>
+      <h3 class="mid">¿Clásico o algo nuevo?</h3>
+      <div class="tiles">
+        <button data-a="clasico"><img src="img/a3.jpg" alt=""><span>Clásico</span></button>
+        <button data-a="nuevo"><img src="img/fam0102.jpg" alt=""><span>Algo nuevo</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="result" hidden>
+    <div class="poster" id="poster">
+      <div class="p-top"><img src="assets/logo-cream.svg" alt="Moshu" class="p-logo"></div>
+      <p class="p-pre">Mi antojo es</p>
+      <div class="p-name" id="rProfile">—</div>
+      <figure class="p-photo"><img id="rImg" src="" alt=""></figure>
+      <span class="p-box" id="rProd"></span>
+      <p class="p-desc" id="rDesc"></p>
+      <p class="p-foot">Poco tiempo. Buenas decisiones.</p>
+      <span class="sticker st-poster">¿y vos?</span>
+    </div>
+    <div class="cta-row two">
+      <button class="btn btn-dark" id="shareBtn">Compartir</button>
+      <button class="btn btn-line dark" id="retry">De nuevo</button>
+    </div>
+    <form id="togoForm" class="form dark-form" novalidate>
+      <h3 class="mid">Tu combo te espera.</h3>
+      <label><span>Tu WhatsApp</span><input name="wa" required inputmode="tel" placeholder="11 2345 6789"></label>
+      <label class="check"><input type="checkbox" name="ok" required><span>Acepto que Moshu use mis datos para mandarme el código y novedades (Ley 25.326).</span></label>
+      <button class="btn btn-red" type="submit">Quiero mi ticket →</button>
+    </form>
+    <div id="togoOk" class="receipt" hidden>
+      <img src="assets/logo-black.svg" alt="Moshu" class="r-logo">
+      <p class="r-sub">To Go · Antojo resuelto</p>
+      <div class="r-line"></div>
+      <div class="r-row"><span id="tProf">Perfil</span><span>✓</span></div>
+      <div class="r-row"><span id="tProd">Combo</span><span>1</span></div>
+      <div class="r-line"></div>
+      <p class="r-code" id="togoCode">MOSHU-TOGO-0000</p>
+      <div class="barcode" aria-hidden="true"></div>
+      <p class="r-foot">Canjealo en<br><b>Moshu Bakery &amp; Pizza</b><br><small>(el ex Jornal)</small></p>
+      <p class="r-fine">Mostrá este ticket en caja</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <img src="assets/logo-cream.svg" alt="Moshu" class="foot-logo">
+  <p class="hand foot-hand">nada acá es casualidad</p>
+  <ul class="sedes">
+    <li><b>Cakes &amp; Brunch</b><span>Saavedra · Palermo</span></li>
+    <li><b>Bakery &amp; Pizza</b><span>el ex Jornal</span></li>
+    <li><b>To Go</b><span>muy pronto</span></li>
+    <li><b>Lab</b><span>donde pasan las cosas</span></li>
+    <li><b>Professional</b><span>para tu negocio</span></li>
+  </ul>
+  <a class="ig" href="https://www.instagram.com/" target="_blank" rel="noopener">@moshu en Instagram</a>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
